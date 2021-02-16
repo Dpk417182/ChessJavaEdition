@@ -1,0 +1,34 @@
+<component name="libraryTable">
+  <library name="src">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/android/guava-testlib/src" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/android/guava-testlib/test" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/android/guava-tests/benchmark" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/android/guava-tests/test" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/android/guava/src" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/futures/failureaccess/src" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/futures/listenablefuture1/src" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/src" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/src-super/com/google/common/base/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/src-super/com/google/common/cache/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/src-super/com/google/common/collect/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/src-super/com/google/common/escape/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/src-super/com/google/common/primitives/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/src-super/com/google/common/util/concurrent/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/test" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/test-super/com/google/common/collect/testing/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/test-super/com/google/common/math/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/test-super/com/google/common/primitives/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/test-super/com/google/common/testing/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-gwt/test-super/com/google/common/util/concurrent/super" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-testlib/src" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-testlib/test" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-tests/benchmark" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava-tests/test" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/guava/src" />
+      <root url="jar://$USER_HOME$/Downloads/guava-master.zip!/guava-master/refactorings" />
+    </SOURCES>
+  </library>
+</component>
