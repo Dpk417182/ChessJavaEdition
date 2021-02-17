@@ -1,10 +1,10 @@
-package com.chess.board;
+package com.chess.engine.board;
 
-import com.chess.pieces.Pawn;
-import com.chess.pieces.Piece;
-import com.chess.pieces.Rook;
+import com.chess.engine.pieces.Pawn;
+import com.chess.engine.pieces.Piece;
+import com.chess.engine.pieces.Rook;
 
-import static com.chess.board.Board.*;
+import static com.chess.engine.board.Board.*;
 
 public abstract class Move {
 

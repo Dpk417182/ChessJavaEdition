@@ -1,10 +1,11 @@
-package com.chess.board;
+package com.chess.engine.board;
 
-import com.chess.Alliance;
-import com.chess.pieces.*;
-import com.chess.player.BlackPlayer;
-import com.chess.player.Player;
-import com.chess.player.WhitePlayer;
+import com.chess.engine.Alliance;
+import com.chess.engine.board.Tile;
+import com.chess.engine.pieces.*;
+import com.chess.engine.player.BlackPlayer;
+import com.chess.engine.player.Player;
+import com.chess.engine.player.WhitePlayer;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 
@@ -166,7 +167,7 @@ public class Board {
                return this;
           }
 
-          public Builder setMoveMaker(final Alliance alliance) {
+          public Builder setMoveMaker(final Alliance nextMoveMaker) {
                this.nextMoveMaker = nextMoveMaker;
                return this;
           }

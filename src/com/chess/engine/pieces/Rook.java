@@ -1,26 +1,23 @@
-package com.chess.pieces;
+package com.chess.engine.pieces;
 
-import com.chess.Alliance;
-import com.chess.board.Board;
-import com.chess.board.BoardUtils;
-import com.chess.board.Move;
-import com.chess.board.Move.AttackMove;
-import com.chess.board.Move.MajorMove;
-import com.chess.board.Tile;
+import com.chess.engine.Alliance;
+import com.chess.engine.board.Board;
+import com.chess.engine.board.BoardUtils;
+import com.chess.engine.board.Move;
+import com.chess.engine.board.Tile;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Queen extends Piece {
+public class Rook extends Piece {
 
-    private final static int[] CANDIDATE_MOVE_VECTOR_COORDS = {-9, -8, -7, -1, 1, 7, 8, 9};
+    private final static int[] CANDIDATE_MOVE_VECTOR_COORDS = {-8, -1, 1, 8};
 
-    public Queen(final int piecePosition, final Alliance pieceAlliance) {
-        super(PieceType.QUEEN, piecePosition, pieceAlliance);
+    public Rook(final int piecePosition, final Alliance pieceAlliance) {
+        super(PieceType.ROOK, piecePosition, pieceAlliance);
     }
-
 
     @Override
     public Collection<Move> calculateLegalMoves(final Board board) {
@@ -39,12 +36,12 @@ public class Queen extends Piece {
                 if (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
                     final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
                     if (!candidateDestinationTile.isOccupied()) {
-                        legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));   // Valid, non-attacking move
+                        legalMoves.add(new Move.MajorMove(board, this, candidateDestinationCoordinate));   // Valid, non-attacking move
                     } else {
                         final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                         final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
                         if (this.pieceAlliance != pieceAlliance) {
-                            legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));   // Valid, attacking move
+                            legalMoves.add(new Move.AttackMove(board, this, candidateDestinationCoordinate,  pieceAtDestination));   // Valid, attacking move
                         }
                         break;
                     }
@@ -56,23 +53,21 @@ public class Queen extends Piece {
     }
 
     @Override
-    public Queen movePiece(Move move) {
-        return new Queen(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
+    public Rook movePiece(Move move) {
+        return new Rook(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
     }
 
 
     @Override
     public String toString() {
-        return PieceType.QUEEN.toString();
+        return PieceType.ROOK.toString();
     }
 
     private static boolean isFirstFileExclusion(final int currentPosition, final int candidateOffset) {
-        return BoardUtils.FIRST_FILE[currentPosition] && (candidateOffset == -9 || candidateOffset == 7)
-                || candidateOffset == -1;
+        return BoardUtils.FIRST_FILE[currentPosition] && (candidateOffset == -1);
     }
 
     private static boolean isEighthFileExclusion(final int currentPosition, final int candidateOffset) {
-        return BoardUtils.EIGHTH_FILE[currentPosition] && (candidateOffset == -7 || candidateOffset == 9
-                || candidateOffset == 1);
+        return BoardUtils.EIGHTH_FILE[currentPosition] && (candidateOffset == 1);
     }
 }
