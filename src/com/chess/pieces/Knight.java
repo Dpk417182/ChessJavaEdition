@@ -17,8 +17,8 @@ public class Knight extends Piece {
 
     private final static int[] CANDIDATE_MOVE_COORDS = {-17, -15, -10, -6, 6, 10, 15, 17};
 
-    Knight(final int piecePosition, final Alliance pieceAlliance) {
-        super(piecePosition, pieceAlliance);
+    public Knight(final int piecePosition, final Alliance pieceAlliance) {
+        super(PieceType.KNIGHT, piecePosition, pieceAlliance);
     }
 
     @Override
@@ -49,6 +49,12 @@ public class Knight extends Piece {
         }
 
         return ImmutableList.copyOf(legalMoves);
+    }
+
+
+    @Override
+    public String toString() {
+        return PieceType.KNIGHT.toString();
     }
 
     // Edge cases for when knight can't move as usual (1st, 2nd and 7th, 8th ranks)

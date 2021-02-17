@@ -17,8 +17,8 @@ public class King extends Piece {
 
     private final static int[] CANDIDATE_MOVE_COORDS = {-9, -8, -7, -1, 1, 7, 8, 9};
 
-    King(int piecePosition, Alliance pieceAlliance) {
-        super(piecePosition, pieceAlliance);
+    public King(int piecePosition, Alliance pieceAlliance) {
+        super(PieceType.KING, piecePosition, pieceAlliance);
     }
 
     @Override
@@ -48,6 +48,12 @@ public class King extends Piece {
         }
 
         return ImmutableList.copyOf(legalMoves);
+    }
+
+
+    @Override
+    public String toString() {
+        return PieceType.KING.toString();
     }
 
     private static boolean isFirstFileExclusion(final int currentPosition, final int candidateOffset) {

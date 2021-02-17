@@ -7,8 +7,8 @@ public class BoardUtils {
     public static final boolean[] SEVENTH_FILE = initFile(6);
     public static final boolean[] EIGHTH_FILE = initFile(7);
 
-    public static final boolean[] SECOND_RANK = initRank(1);
-    public static final boolean[] SEVENTH_RANK = initRank(6);
+    public static final boolean[] SECOND_RANK = initRank(8);
+    public static final boolean[] SEVENTH_RANK = initRank(48);
 
     public static final int NUM_TILES = 64;
     public static final int NUM_TILES_PER_ROW = 8;
@@ -23,7 +23,7 @@ public class BoardUtils {
 
     private static boolean[] initFile(int fileNumber) {
         final boolean[] file = new boolean[NUM_TILES];
-        do{
+        do {
             file[fileNumber] = true;
             fileNumber += NUM_TILES_PER_ROW;
         } while(fileNumber < NUM_TILES);
@@ -33,10 +33,10 @@ public class BoardUtils {
 
     private static boolean[] initRank(int rankNumber) {
         final boolean[] rank = new boolean[NUM_TILES];
-        do{
+        do {
             rank[rankNumber] = true;
-            rankNumber += NUM_TILES_PER_ROW;
-        } while(rankNumber < NUM_TILES);
+            rankNumber++;
+        } while(rankNumber % NUM_TILES_PER_ROW != 0);
 
         return rank;
     }
