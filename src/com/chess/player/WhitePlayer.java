@@ -3,8 +3,11 @@ package com.chess.player;
 import com.chess.Alliance;
 import com.chess.board.Board;
 import com.chess.board.Move;
+import com.chess.board.Move.KingsideCastleMove;
+import com.chess.board.Move.QueensideCastleMove;
 import com.chess.board.Tile;
 import com.chess.pieces.Piece;
+import com.chess.pieces.Rook;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
@@ -49,8 +52,8 @@ public class WhitePlayer extends Player {
                     if (Player.calculateAttacksOnTile(61, opponentsLegals).isEmpty() &&
                         Player.calculateAttacksOnTile(62, opponentsLegals).isEmpty() &&
                         rookTile.getPiece().getPieceType().isRook()) {
-                        // TODO add castle move
-                        kingCastles.add(null);
+                        kingCastles.add(new KingsideCastleMove(this.board, this.playerKing, 62,
+                                        (Rook)rookTile.getPiece(), rookTile.getTileCoordinate(), 61));
                     }
                 }
             }
@@ -60,8 +63,8 @@ public class WhitePlayer extends Player {
                 !this.board.getTile(57).isOccupied()) {
             final Tile rookTile = this.board.getTile(56);
             if (rookTile.isOccupied() && rookTile.getPiece().isFirstMove()) {
-                                    // TODO add castle move
-                    kingCastles.add(null);
+                    kingCastles.add(new QueensideCastleMove(this.board, this.playerKing, 58,
+                                   (Rook)rookTile.getPiece(), rookTile.getTileCoordinate(), 59));
             }
 
             }

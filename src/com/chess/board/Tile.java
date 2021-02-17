@@ -36,6 +36,10 @@ public abstract class Tile {
 
     public abstract Piece getPiece();
 
+    public int getTileCoordinate() {
+        return this.TileCoordinate;
+    }
+
     public static final class emptyTile extends Tile {
         private emptyTile(final int coordinate) {
             super(coordinate);

@@ -5,11 +5,14 @@ import com.chess.board.Board;
 import com.chess.board.Move;
 import com.chess.board.Tile;
 import com.chess.pieces.Piece;
+import com.chess.pieces.Rook;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import static com.chess.board.Move.*;
 
 public class BlackPlayer extends Player {
     public BlackPlayer(final Board board,
@@ -48,8 +51,8 @@ public class BlackPlayer extends Player {
                     if (Player.calculateAttacksOnTile(5, opponentsLegals).isEmpty() &&
                             Player.calculateAttacksOnTile(6, opponentsLegals).isEmpty() &&
                             rookTile.getPiece().getPieceType().isRook()) {
-                        // TODO add castle move
-                        kingCastles.add(null);
+                        kingCastles.add(new KingsideCastleMove(this.board, this.playerKing, 6,
+                                       (Rook)rookTile.getPiece(), rookTile.getTileCoordinate(),  5));
                     }
                 }
             }
@@ -59,8 +62,8 @@ public class BlackPlayer extends Player {
                     !this.board.getTile(3).isOccupied()) {
                 final Tile rookTile = this.board.getTile(0);
                 if (rookTile.isOccupied() && rookTile.getPiece().isFirstMove()) {
-                    // TODO add castle move
-                    kingCastles.add(null);
+                    kingCastles.add(new QueensideCastleMove(this.board, this.playerKing, 2,
+                                   (Rook)rookTile.getPiece(), rookTile.getTileCoordinate(), 3));
                 }
 
             }
