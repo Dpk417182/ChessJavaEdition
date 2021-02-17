@@ -17,7 +17,7 @@ public class Pawn extends Piece {
     private final static int[] CANDIDATE_MOVE_COORDS = {8, 7, 9, 16};
 
 
-    public Pawn(int piecePosition, Alliance pieceAlliance) {
+    public Pawn(final int piecePosition, final Alliance pieceAlliance) {
         super(PieceType.PAWN, piecePosition, pieceAlliance);
     }
 
@@ -69,6 +69,11 @@ public class Pawn extends Piece {
 
         }
         return ImmutableList.copyOf(legalMoves);
+    }
+
+    @Override
+    public Pawn movePiece(Move move) {
+        return new Pawn(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
     }
 
 
