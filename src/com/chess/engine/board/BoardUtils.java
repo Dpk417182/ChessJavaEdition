@@ -4,11 +4,21 @@ public class BoardUtils {
 
     public static final boolean[] FIRST_FILE = initFile(0);
     public static final boolean[] SECOND_FILE = initFile(1);
+    public static final boolean[] THIRD_FILE = initFile(2);
+    public static final boolean[] FOURTH_FILE = initFile(3);
+    public static final boolean[] FIFTH_FILE = initFile(4);
+    public static final boolean[] SIXTH_FILE = initFile(5);
     public static final boolean[] SEVENTH_FILE = initFile(6);
     public static final boolean[] EIGHTH_FILE = initFile(7);
 
-    public static final boolean[] SECOND_RANK = initRank(8);
-    public static final boolean[] SEVENTH_RANK = initRank(48);
+    public static final boolean[] EIGHTH_RANK = initRank(0);
+    public static final boolean[] SEVENTH_RANK = initRank(8);
+    public static final boolean[] SIXTH_RANK = initRank(16);
+    public static final boolean[] FIFTH_RANK = initRank(24);
+    public static final boolean[] FOURTH_RANK = initRank(32);
+    public static final boolean[] THIRD_RANK = initRank(40);
+    public static final boolean[] SECOND_RANK = initRank(48);
+    public static final boolean[] FIRST_RANK = initRank(56);
 
     public static final int NUM_TILES = 64;
     public static final int NUM_TILES_PER_ROW = 8;
