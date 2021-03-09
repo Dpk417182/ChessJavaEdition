@@ -30,7 +30,11 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
 public class Table {
 
     private final JFrame gameFrame;
+    private final GameHistoryPanel gameHistoryPanel;
+    private final TakenPiecesPanel takenPiecesPanel;
     private final BoardPanel boardPanel;
+    private final MoveLog moveLog;
+
     private Board chessBoard;
 
     private Tile sourceTile;
@@ -56,10 +60,15 @@ public class Table {
         this.gameFrame.setJMenuBar(tableMenuBar);
         this.gameFrame.setSize(OUTER_FRAME_DIMENSION);
         this.chessBoard = Board.createStandardBoard();
+        this.gameHistoryPanel = new GameHistoryPanel();
+        this.takenPiecesPanel = new TakenPiecesPanel();
         this.boardPanel = new BoardPanel();
+        this.moveLog = new MoveLog();
         this.boardDirection = BoardDirection.NORMAL;
-        this.highlightLegalMoves = false;
+        this.highlightLegalMoves = true;
+        this.gameFrame.add(this.takenPiecesPanel, BorderLayout.WEST);
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
+        this.gameFrame.add(this.gameHistoryPanel, BorderLayout.EAST);
         this.gameFrame.setVisible(true);
     }
 
@@ -86,6 +95,7 @@ public class Table {
         exitMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.exit(0);
             }
         });
@@ -95,7 +105,6 @@ public class Table {
         }
 
         private JMenu createPreferencesMenu() {
-
             final JMenu preferencesMenu = new JMenu("Preferences");
             final JMenuItem flipBoardMenuItem = new JMenuItem("Flip Board");
             flipBoardMenuItem.addActionListener(new ActionListener() {
@@ -106,8 +115,9 @@ public class Table {
                 }
             });
             preferencesMenu.add(flipBoardMenuItem);
+
             preferencesMenu.addSeparator();
-            final JCheckBoxMenuItem legalMoveHighlighterCheckbox = new JCheckBoxMenuItem("Highlight Legal Moves", false);
+            final JCheckBoxMenuItem legalMoveHighlighterCheckbox = new JCheckBoxMenuItem("Highlight Legal Moves", true);
             legalMoveHighlighterCheckbox.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -120,7 +130,6 @@ public class Table {
         }
 
         public enum BoardDirection {
-
             NORMAL {
                 @Override
                 List<TilePanel> traverse(final List<TilePanel> boardTiles) {
@@ -178,6 +187,38 @@ public class Table {
 
         }
 
+        public static class MoveLog {
+            private final List<Move> moves;
+
+            MoveLog() {
+                this.moves = new ArrayList<>();
+            }
+
+            public List<Move> getMoves() {
+                return this.moves;
+            }
+
+            public void addMove(final Move move) {
+                this.moves.add(move);
+            }
+
+            public int size() {
+                return this.moves.size();
+            }
+
+            public void clear() {
+                this.moves.clear();
+            }
+
+            public Move removeMove(int index) {
+                return this.moves.remove(index);
+            }
+
+            public boolean removeMove(final Move move) {
+                return this.moves.remove(move);
+            }
+        }
+
         private class TilePanel extends JPanel {
             private final int tileID;
 
@@ -211,7 +252,7 @@ public class Table {
                                 final MoveTransition transition = chessBoard.currentPlayer().makeMove(move);
                                 if (transition.getMoveStatus().isDone()) {
                                     chessBoard = transition.getTransitionBoard();
-                                    // TODO add move to move log
+                                    moveLog.addMove(move);
                                 }
                                 sourceTile = null;
                                 destinationTile = null;
@@ -220,6 +261,8 @@ public class Table {
                             SwingUtilities.invokeLater(new Runnable() {
                                 @Override
                                 public void run() {
+                                    gameHistoryPanel.redo(chessBoard, moveLog);
+                                    takenPiecesPanel.redo(moveLog);
                                     boardPanel.drawBoard(chessBoard);
                                 }
                             });
@@ -246,7 +289,6 @@ public class Table {
 
                     }
                 });
-
                 validate();
             }
 
